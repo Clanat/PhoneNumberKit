@@ -11,7 +11,7 @@ import Foundation
 /**
 Parser. Contains parsing functions. 
 */
-final class PhoneNumberParser {
+public final class PhoneNumberParser {
     let metadata: MetadataManager
     let regex: RegexManager
     
@@ -27,7 +27,7 @@ final class PhoneNumberParser {
     - Parameter number: Phone number string.
     - Returns: Normalized phone number string.
     */
-    func normalizePhoneNumber(_ number: String) -> String {
+    public func normalizePhoneNumber(_ number: String) -> String {
         let normalizationMappings = PhoneNumberPatterns.allNormalizationMappings
         return regex.stringByReplacingOccurrences(number, map: normalizationMappings)
     }
@@ -41,7 +41,7 @@ final class PhoneNumberParser {
     - Parameter metadata: Metadata territory object.
     - Returns: Country code is UInt64.
     */
-    func extractCountryCode(_ number: String, nationalNumber: inout String, metadata: MetadataTerritory) throws -> UInt64 {
+    public func extractCountryCode(_ number: String, nationalNumber: inout String, metadata: MetadataTerritory) throws -> UInt64 {
         var fullNumber = number
         guard let possibleCountryIddPrefix = metadata.internationalPrefix else {
             return 0
@@ -85,7 +85,7 @@ final class PhoneNumberParser {
     - Parameter nationalNumber: National number string.
     - Returns: Country code is UInt64. Optional.
     */
-    func extractPotentialCountryCode(_ fullNumber: String, nationalNumber: inout String) -> UInt64? {
+    public func extractPotentialCountryCode(_ fullNumber: String, nationalNumber: inout String) -> UInt64? {
         let nsFullNumber = fullNumber as NSString
         if nsFullNumber.length == 0 || nsFullNumber.substring(to: 1) == "0" {
             return 0

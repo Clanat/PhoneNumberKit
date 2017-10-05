@@ -32,7 +32,7 @@ MetadataTerritory object
 - Parameter uan: MetadataPhoneNumberDesc for uan numbers
 - Parameter leadingDigits: Optional leading digits for the territory
 */
-struct MetadataTerritory {
+public struct MetadataTerritory {
     let codeID: String
     let countryCode: UInt64
     let internationalPrefix: String?
